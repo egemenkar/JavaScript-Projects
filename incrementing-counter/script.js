@@ -1,0 +1,27 @@
+const counters = document.querySelectorAll(".counter");
+
+counters.forEach(counter => {
+    counter.innerText = "0";
+
+    const updateCounter = () => {
+
+        // " + " sign turns string to number
+
+        const target = +counter.getAttribute("data-target");
+        const c = +counter.innerText;
+
+        // Increase the divisor (200) number to slow incrementing
+
+        const increment = target / 200;
+
+        if(c < target) {
+            counter.innerText = `${Math.ceil(c + increment)}`;
+            setTimeout(updateCounter, 1);
+        } else {
+            counter.innerText = target;
+        }
+
+    }
+
+    updateCounter();
+});
